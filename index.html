@@ -19,7 +19,6 @@
             min-height: 100vh;
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -106,6 +105,226 @@
             outline: none;
             background: rgba(255, 71, 87, 0.2);
             border-color: #ff6b7a;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .icon-button {
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .icon-button:hover {
+            color: #ff4757;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #1a1a2e;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #ff4757;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: #ff4757;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #e0e0e0;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ff4757;
+            border-radius: 8px;
+            background: rgba(255, 71, 87, 0.1);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            background: rgba(255, 71, 87, 0.2);
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            flex: 1;
+            background: linear-gradient(90deg, #ff4757, #ff6b7a);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            flex: 1;
+            background: rgba(255, 71, 87, 0.2);
+            color: #ff4757;
+            border: 1px solid #ff4757;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 71, 87, 0.3);
+        }
+
+        /* Notifications */
+        .notifications-panel {
+            position: fixed;
+            right: 0;
+            top: 60px;
+            width: 400px;
+            height: calc(100vh - 60px);
+            background: rgba(10, 10, 15, 0.95);
+            border-left: 1px solid #ff4757;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 99;
+            overflow-y: auto;
+        }
+
+        .notifications-panel.active {
+            transform: translateX(0);
+        }
+
+        .notifications-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #ff4757;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .notification-tab {
+            background: none;
+            border: none;
+            color: #a0a0a0;
+            cursor: pointer;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .notification-tab.active {
+            color: #ff4757;
+            border-bottom-color: #ff4757;
+        }
+
+        .notification-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 71, 87, 0.2);
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .notification-icon {
+            font-size: 1.5rem;
+        }
+
+        .notification-text {
+            flex: 1;
+        }
+
+        .notification-title {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .notification-time {
+            color: #a0a0a0;
+            font-size: 0.85rem;
+        }
+
+        .empty-notifications {
+            padding: 3rem 1.5rem;
+            text-align: center;
+            color: #a0a0a0;
+        }
+
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
         }
 
         /* Main Container */
@@ -524,14 +743,17 @@
             align-items: center;
             gap: 1rem;
             flex-wrap: wrap;
+            background: rgba(26, 26, 46, 0.8);
+            border: 1px solid #ff4757;
+            border-radius: 10px;
         }
 
         .reader-title {
             flex: 1;
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            color: #ff4757;
+            color: #fff;
         }
 
         .reader-nav {
@@ -576,6 +798,46 @@
             border-radius: 8px;
         }
 
+        /* Policy Pages */
+        .policy-content {
+            background: rgba(26, 26, 46, 0.8);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 71, 87, 0.2);
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .policy-content h2 {
+            color: #ff4757;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .policy-content h3 {
+            color: #fff;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .policy-content p {
+            color: #e0e0e0;
+            margin-bottom: 1rem;
+        }
+
+        .policy-content ul {
+            color: #e0e0e0;
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .policy-content li {
+            margin-bottom: 0.5rem;
+        }
+
         /* Footer */
         footer {
             background: rgba(10, 10, 15, 0.95);
@@ -584,6 +846,25 @@
             text-align: center;
             color: #a0a0a0;
             margin-top: 3rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #a0a0a0;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ff4757;
         }
 
         /* Responsive */
@@ -624,6 +905,10 @@
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
                 gap: 1rem;
             }
+
+            .notifications-panel {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -640,8 +925,74 @@
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Pesquisar..." onkeyup="if(event.key === 'Enter') searchSeries(this.value)">
             </div>
+            <div class="header-icons">
+                <button class="icon-button" onclick="toggleNotifications()" title="Notificações">🔔</button>
+                <button class="icon-button" onclick="openLoginModal()" title="Login">👤</button>
+            </div>
         </div>
     </header>
+
+    <!-- Notifications Panel -->
+    <div class="notifications-panel" id="notificationsPanel">
+        <div class="notifications-header">
+            <button class="notification-tab active" onclick="switchNotificationTab('updates')">Atualizações</button>
+            <button class="notification-tab" onclick="switchNotificationTab('announcements')">Anúncios</button>
+        </div>
+        <div id="updates-tab">
+            <div class="empty-notifications">
+                <div class="empty-icon">🔔</div>
+                <div class="empty-text">Nenhuma notificação ainda</div>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">As notificações aparecerão aqui quando você tiver atualizações</p>
+            </div>
+        </div>
+        <div id="announcements-tab" style="display: none;">
+            <div class="empty-notifications">
+                <div class="empty-icon">📢</div>
+                <div class="empty-text">Nenhum anúncio</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeLoginModal()">✕</button>
+            <div id="loginForm">
+                <h2 class="modal-title">Entrar</h2>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" id="loginPassword" placeholder="Sua senha">
+                </div>
+                <div class="form-buttons">
+                    <button class="btn-primary" onclick="handleLogin()">Entrar</button>
+                    <button class="btn-secondary" onclick="switchToSignup()">Criar Conta</button>
+                </div>
+            </div>
+            <div id="signupForm" style="display: none;">
+                <h2 class="modal-title">Criar Conta</h2>
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" id="signupName" placeholder="Seu nome">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="signupEmail" placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" id="signupPassword" placeholder="Sua senha">
+                </div>
+                <div class="form-buttons">
+                    <button class="btn-primary" onclick="handleSignup()">Criar Conta</button>
+                    <button class="btn-secondary" onclick="switchToLogin()">Voltar ao Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <div class="container" id="mainContent">
@@ -649,6 +1000,11 @@
 
     <!-- Footer -->
     <footer>
+        <div class="footer-links">
+            <a onclick="showPage('privacy')">Política de Privacidade</a>
+            <a onclick="showPage('dmca')">DMCA</a>
+            <a href="https://discord.gg" target="_blank">Discord</a>
+        </div>
         <p>&copy; 2025 Wolftoon. Todos os direitos reservados.</p>
     </footer>
 
@@ -756,6 +1112,7 @@
         let currentPage = 'home';
         let currentCarouselSlide = 0;
         let carouselInterval;
+        let currentUser = null;
 
         // Carousel
         function startCarousel() {
@@ -813,6 +1170,56 @@
             showSlide(currentCarouselSlide);
         }
 
+        // Notifications
+        function toggleNotifications() {
+            document.getElementById('notificationsPanel').classList.toggle('active');
+        }
+
+        function switchNotificationTab(tab) {
+            document.querySelectorAll('.notification-tab').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('[id$="-tab"]').forEach(t => t.style.display = 'none');
+            event.target.classList.add('active');
+            document.getElementById(tab + '-tab').style.display = 'block';
+        }
+
+        // Login/Signup
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('active');
+        }
+
+        function switchToSignup() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('signupForm').style.display = 'block';
+        }
+
+        function switchToLogin() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('signupForm').style.display = 'none';
+        }
+
+        function handleLogin() {
+            const email = document.getElementById('loginEmail').value;
+            if (email) {
+                currentUser = { email, name: email.split('@')[0] };
+                closeLoginModal();
+                alert('Login realizado com sucesso!');
+            }
+        }
+
+        function handleSignup() {
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            if (name && email) {
+                currentUser = { name, email };
+                closeLoginModal();
+                alert('Conta criada com sucesso!');
+            }
+        }
+
         // Create series card
         function createSeriesCard(s) {
             const card = document.createElement('div');
@@ -843,6 +1250,7 @@
         function showPage(page) {
             currentPage = page;
             const mainContent = document.getElementById('mainContent');
+            document.getElementById('notificationsPanel').classList.remove('active');
 
             switch(page) {
                 case 'home':
@@ -874,6 +1282,66 @@
                                 Wolftoon é sua plataforma de leitura de mangás, manhwas e quadrinhos. 
                                 Aqui você encontra as melhores histórias traduzidas com qualidade e rapidez.
                             </p>
+                        </div>
+                    `;
+                    break;
+
+                case 'privacy':
+                    mainContent.innerHTML = `
+                        <div class="policy-content">
+                            <h2>Política de Privacidade</h2>
+                            <h3>1. Introdução</h3>
+                            <p>Bem-vindo ao Wolftoon. Estamos comprometidos em proteger suas informações pessoais e seu direito à privacidade.</p>
+                            
+                            <h3>2. Informações que Coletamos</h3>
+                            <ul>
+                                <li>Informações de identificação pessoal (nome, email, dados de contato)</li>
+                                <li>Dados técnicos (endereço IP, tipo de navegador, sistema operacional)</li>
+                                <li>Dados de uso (páginas visitadas, tempo gasto no site)</li>
+                                <li>Cookies e informações de rastreamento</li>
+                            </ul>
+                            
+                            <h3>3. Como Usamos Suas Informações</h3>
+                            <ul>
+                                <li>Fornecer e manter nossos serviços</li>
+                                <li>Melhorar e personalizar sua experiência</li>
+                                <li>Comunicar atualizações e ofertas</li>
+                                <li>Analisar o uso do site e otimizar a experiência do usuário</li>
+                                <li>Cumprir obrigações legais</li>
+                            </ul>
+                            
+                            <h3>4. Segurança de Dados</h3>
+                            <p>Implementamos várias medidas de segurança para proteger suas informações pessoais contra acesso não autorizado, uso ou divulgação.</p>
+                            
+                            <h3>5. Seus Direitos</h3>
+                            <p>Você tem o direito de acessar, corrigir ou solicitar a exclusão de suas informações pessoais. Para exercer esses direitos, entre em contato conosco.</p>
+                        </div>
+                    `;
+                    break;
+
+                case 'dmca':
+                    mainContent.innerHTML = `
+                        <div class="policy-content">
+                            <h2>Política DMCA</h2>
+                            <h3>Requisitos de Notificação DMCA</h3>
+                            <p>Se você acredita que o material no Wolftoon infringe seus direitos autorais, você pode registrar uma solicitação DMCA.</p>
+                            
+                            <h3>Requisitos do Relatório DMCA</h3>
+                            <ol>
+                                <li>Identifique a obra protegida por direitos autorais que você alega ter sido infringida</li>
+                                <li>Identifique o material ou link que você alega ser infrator, incluindo a URL</li>
+                                <li>Forneça suas informações completas de contato (nome, endereço, telefone, email)</li>
+                                <li>Inclua as seguintes declarações em seu aviso:
+                                    <ul>
+                                        <li>"Tenho boa fé de que o uso do material protegido por direitos autorais que estou reclamando não é autorizado"</li>
+                                        <li>"As informações neste aviso são precisas e, sob pena de perjúrio, sou o proprietário ou autorizado a agir em nome do proprietário"</li>
+                                    </ul>
+                                </li>
+                                <li>Forneça seu nome legal completo e uma assinatura eletrônica ou física</li>
+                            </ol>
+                            
+                            <h3>Contato</h3>
+                            <p>Para enviar uma notificação DMCA, entre em contato conosco através do email: dmca@wolftoon.com</p>
                         </div>
                     `;
                     break;
@@ -994,8 +1462,8 @@
                         <button class="btn-read" onclick="showSeriesDetail(${s.id})">← Voltar</button>
                         <div class="reader-title">${s.title} - Capítulo ${chapterNum}</div>
                         <div class="reader-nav">
-                            <button onclick="readChapter(${s.id}, ${chapterNum - 1})" ${chapterNum <= 1 ? 'disabled' : ''}>Anterior</button>
-                            <button onclick="readChapter(${s.id}, ${chapterNum + 1})" ${chapterNum >= s.chapters ? 'disabled' : ''}>Próximo</button>
+                            <button onclick="readChapter(${s.id}, ${chapterNum - 1})" ${chapterNum <= 1 ? 'disabled' : ''}>← Anterior</button>
+                            <button onclick="readChapter(${s.id}, ${chapterNum + 1})" ${chapterNum >= s.chapters ? 'disabled' : ''}>Próximo →</button>
                         </div>
                     </div>
                     <div class="reader-pages">
